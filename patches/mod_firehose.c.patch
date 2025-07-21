@@ -1,0 +1,13 @@
+diff --git a/modules/debugging/mod_firehose.c b/modules/debugging/mod_firehose.c
+index 1dfdd03..b244851 100644
+--- a/modules/debugging/mod_firehose.c
++++ b/modules/debugging/mod_firehose.c
+@@ -101,7 +101,7 @@ typedef struct firehose_ctx_t
+ } firehose_ctx_t;
+ 
+ #define HEADER_LEN (sizeof(apr_uint64_t)*6 + APR_UUID_FORMATTED_LENGTH + 7)
+-#define BODY_LEN (PIPE_BUF - HEADER_LEN - 2)
++#define BODY_LEN (_POSIX_PIPE_BUF- HEADER_LEN - 2)
+ #define HEADER_FMT "%" APR_UINT64_T_HEX_FMT " %" APR_UINT64_T_HEX_FMT " %c %s %" APR_UINT64_T_HEX_FMT CRLF
+ 
+ static apr_status_t filter_output_cleanup(void *dummy)
